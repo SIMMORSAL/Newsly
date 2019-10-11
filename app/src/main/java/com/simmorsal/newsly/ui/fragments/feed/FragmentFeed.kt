@@ -10,13 +10,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.simmorsal.newsly.R
+import com.simmorsal.newsly.base.Application
 import com.simmorsal.newsly.databinding.FragmentFeedBinding
 import javax.inject.Inject
 
 class FragmentFeed : Fragment() {
 
-    lateinit var binding: FragmentFeedBinding
-    lateinit var viewModel: ViewModelFeed
+    private lateinit var binding: FragmentFeedBinding
+    private lateinit var viewModel: ViewModelFeed
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
@@ -24,7 +25,7 @@ class FragmentFeed : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        return inflater.inflate(R.layout.fragment_feed, container, false)
+        (activity!!.application as Application).appComponent.inject(this)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_feed, container, false)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(ViewModelFeed::class.java)
         binding.viewModel = viewModel

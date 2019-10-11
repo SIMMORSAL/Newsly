@@ -22,7 +22,3 @@ abstract class ModuleViewModel {
     @ViewModelKey(ViewModelFeed::class)
     abstract fun bindViewModelFeed(viewModelFeed: ViewModelFeed): ViewModel
 }
-
-//@Module
-//abstract class ModuleViewModelFeed {
-//}

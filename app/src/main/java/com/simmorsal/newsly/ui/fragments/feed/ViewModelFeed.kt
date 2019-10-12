@@ -3,9 +3,9 @@ package com.simmorsal.newsly.ui.fragments.feed
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.simmorsal.newsly.data.Repository
 import com.simmorsal.newsly.data.model.ArticlesItem
 import com.simmorsal.newsly.data.model.ModelTopHeadlines
-import com.simmorsal.newsly.data.repository.RepositoryNews
 import com.simmorsal.newsly.utils.NEWSAPI_KEY
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -14,15 +14,15 @@ import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class ViewModelFeed @Inject constructor(
-    private val repositoryNews: RepositoryNews
+    private val repository: Repository
 ) : ViewModel() {
 
     private var page = 0
     private val disposable = CompositeDisposable()
 
-    private val _dataTopHeadlines = MutableLiveData<ModelTopHeadlines>()
-    val dataTopHeadlines: LiveData<ModelTopHeadlines>
-        get() = _dataTopHeadlines
+//    private val _dataTopHeadlines = MutableLiveData<ModelTopHeadlines>()
+//    val dataTopHeadlines: LiveData<ModelTopHeadlines>
+//        get() = _dataTopHeadlines
 
     private val _dataArticles = MutableLiveData<MutableList<ArticlesItem>>()
         .apply { value = mutableListOf() }
@@ -33,6 +33,10 @@ class ViewModelFeed @Inject constructor(
     val toastText: LiveData<String>
         get() = _toastText
 
+    private val _navigateToDetails = MutableLiveData<ArticlesItem>()
+    val navigateToDetails: LiveData<ArticlesItem>
+        get() = _navigateToDetails
+
 
     init {
         page = 0
@@ -41,13 +45,13 @@ class ViewModelFeed @Inject constructor(
 
     private fun getData() {
         disposable.add(
-            repositoryNews
+            repository
                 .modelTopHeadlines(page, NEWSAPI_KEY)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<ModelTopHeadlines>() {
                     override fun onSuccess(t: ModelTopHeadlines) {
-                        _dataTopHeadlines.value = t
+//                        _dataTopHeadlines.value = t
                         if (t.status == "ok" && t.articles != null) {
                             val list = mutableListOf<ArticlesItem>()
                             list.addAll(_dataArticles.value!!)
@@ -77,7 +81,8 @@ class ViewModelFeed @Inject constructor(
     }
 
     fun onItemClicked(position: Int) {
-        showToast(_dataArticles.value?.get(position)?.title!!)
+//        showToast(_dataArticles.value?.get(position)?.title!!)
+        _navigateToDetails.value = _dataArticles.value?.get(position)
     }
 
     private fun showToast(text: String) {
@@ -86,5 +91,9 @@ class ViewModelFeed @Inject constructor(
 
     fun doneShowingToast() {
         _toastText.value = ""
+    }
+
+    fun doneNavigatingToDetails() {
+        _navigateToDetails.value = null
     }
 }

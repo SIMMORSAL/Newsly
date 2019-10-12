@@ -3,6 +3,7 @@ package com.simmorsal.newsly.di.modules
 import androidx.lifecycle.ViewModel
 import com.simmorsal.newsly.di.ViewModelKey
 import com.simmorsal.newsly.ui.activities.ViewModelMainActivity
+import com.simmorsal.newsly.ui.fragments.details.ViewModelDetails
 import com.simmorsal.newsly.ui.fragments.feed.ViewModelFeed
 import dagger.Binds
 import dagger.Module
@@ -21,4 +22,9 @@ abstract class ModuleViewModel {
     @IntoMap
     @ViewModelKey(ViewModelFeed::class)
     abstract fun bindViewModelFeed(viewModelFeed: ViewModelFeed): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ViewModelDetails::class)
+    abstract fun bindViewModelDetails(viewModelDetails: ViewModelDetails): ViewModel
 }

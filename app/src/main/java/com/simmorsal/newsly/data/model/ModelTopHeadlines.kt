@@ -1,6 +1,7 @@
 package com.simmorsal.newsly.data.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class ModelTopHeadlines(
 
@@ -39,7 +40,7 @@ data class ArticlesItem(
 
     @field:SerializedName("content")
     val content: Any? = null
-)
+) : Serializable
 
 
 data class Source(
@@ -49,4 +50,4 @@ data class Source(
 
     @field:SerializedName("id")
     val id: String? = null
-)
+) : Serializable

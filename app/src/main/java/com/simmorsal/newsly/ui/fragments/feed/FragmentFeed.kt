@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.simmorsal.newsly.R
 import com.simmorsal.newsly.base.Application
@@ -64,6 +65,14 @@ class FragmentFeed : Fragment() {
 
         viewModel.dataArticles.observe(this, Observer {
             adapter.submitList(it)
+        })
+
+        viewModel.navigateToDetails.observe(this, Observer {
+            it?.let {
+                this.findNavController()
+                    .navigate(FragmentFeedDirections.actionFragmentFeedToFragmentDetails(it))
+                viewModel.doneNavigatingToDetails()
+            }
         })
     }
 }

@@ -7,5 +7,23 @@
     <fragment
         android:id="@+id/fragmentFeed"
         android:name="com.simmorsal.newsly.ui.fragments.feed.FragmentFeed"
-        android:label="FragmentFeed" />
+        android:label="FragmentFeed">
+        <action
+            android:id="@+id/action_fragmentFeed_to_fragmentDetails"
+            app:destination="@id/fragmentDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDetails"
+        android:name="com.simmorsal.newsly.ui.fragments.details.FragmentDetails"
+        android:label="FragmentDetails">
+        <argument
+            android:name="item"
+            app:argType="com.simmorsal.newsly.data.model.ArticlesItem" />
+        <action
+            android:id="@+id/action_fragmentDetails_to_fragmentFeed"
+            app:destination="@id/fragmentFeed"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/fragmentFeed"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

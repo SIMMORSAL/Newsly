@@ -2,6 +2,9 @@
 <resources>
     <dimen name="textBig">48sp</dimen>
     <dimen name="textDefault">14sp</dimen>
-    <dimen name="paddingFeedTitle">16sp</dimen>
+    <dimen name="paddingTextDef">16sp</dimen>
     <dimen name="textMid">18sp</dimen>
+    <dimen name="textSmall">12sp</dimen>
+    <dimen name="defaultCorner">16dp</dimen>
+    <dimen name="marginFullSizeButton">50dp</dimen>
 </resources>

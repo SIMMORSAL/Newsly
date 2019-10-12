@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.simmorsal.newsly.data.model.ArticlesItem" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg"
+        android:orientation="vertical"
+        tools:context=".ui.fragments.details.FragmentDetails">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    imageFromNet="@{item.urlToImage}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@color/bg" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/paddingTextDef"
+                    android:text="@{item.title}"
+                    android:textColor="@color/textStrong"
+                    android:textSize="@dimen/textMid"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/paddingTextDef"
+                    android:paddingEnd="@dimen/paddingTextDef"
+                    android:text="@{item.author}"
+                    android:textColor="@color/textNeutral"
+                    android:textSize="@dimen/textSmall" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/paddingTextDef"
+                    android:background="@drawable/bg_text_description"
+                    android:padding="@dimen/paddingTextDef"
+                    android:text="@{item.description}"
+                    android:textColor="@color/textStrong" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/paddingTextDef"
+                    android:text="@{item.content}"
+                    android:textColor="@color/textNeutral"
+                    android:textSize="@dimen/textDefault" />
+
+                <Button
+                    openLink="@{item.url}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/marginFullSizeButton"
+                    android:layout_marginEnd="50dp"
+                    android:text="Read More"
+                    android:textColor="@color/textNeutral" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>
+
+
+
+
+
+
+
+
+
+
+
+

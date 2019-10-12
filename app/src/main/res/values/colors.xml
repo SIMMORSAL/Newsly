@@ -8,8 +8,11 @@
     <color name="black">#000</color>
     <color name="transparent">#0000</color>
 
+    <color name="textNeutral">#303030</color>
     <color name="textStrong">#242424</color>
     <color name="textStrongest">#000</color>
+
+    <color name="highlightTextStrong">#D6D6D6</color>
 
     <color name="bg">#fff</color>
     <color name="bgTextOverImage">#99ffffff</color>

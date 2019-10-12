@@ -1,6 +1,5 @@
 package com.simmorsal.newsly.base
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import javax.inject.Inject
@@ -14,7 +13,6 @@ class ViewModelFactory @Inject constructor(
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
 
         var creator: Provider<out ViewModel>? = creators[modelClass]
-        Log.i("11111", "ViewModelFactory => create:  " + creators.size)
 
         creator ?: kotlin.run {
             for (entry in creators.entries)

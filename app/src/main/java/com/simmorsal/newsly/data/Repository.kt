@@ -1,11 +1,11 @@
-package com.simmorsal.newsly.data.repository
+package com.simmorsal.newsly.data
 
 import com.simmorsal.newsly.data.model.ModelTopHeadlines
 import com.simmorsal.newsly.data.remote.NewsService
 import io.reactivex.Single
 import javax.inject.Inject
 
-class RepositoryNews @Inject constructor(
+class Repository @Inject constructor(
     private var newsService: NewsService
 ) {
 

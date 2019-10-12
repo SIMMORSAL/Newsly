@@ -2,4 +2,6 @@
 <resources>
     <dimen name="textBig">48sp</dimen>
     <dimen name="textDefault">14sp</dimen>
+    <dimen name="paddingFeedTitle">16sp</dimen>
+    <dimen name="textMid">18sp</dimen>
 </resources>

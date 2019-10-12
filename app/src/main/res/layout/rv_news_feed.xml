@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="item"
+            type="com.simmorsal.newsly.data.model.ArticlesItem" />
+
+        <variable
+            name="clickListener"
+            type="com.simmorsal.newsly.ui.fragments.feed.ClickListenerFeed" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="@{() -> clickListener.onClick(position)}">
+
+        <ImageView
+            android:id="@+id/imgFeed"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="#36B93D"
+            app:imageFromNet="@{item.urlToImage}"
+            app:layout_constraintDimensionRatio="H,1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@id/imgFeed"
+            app:layout_constraintEnd_toEndOf="@id/imgFeed"
+            app:layout_constraintStart_toStartOf="@id/imgFeed">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_on_top_of_texts_over_images" />
+
+            <TextView
+                android:id="@+id/txtFeedTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bgTextOverImage"
+                android:padding="@dimen/paddingFeedTitle"
+                android:text="@{item.title}"
+                android:textColor="@color/textStrongest"
+                android:textSize="@dimen/textMid"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

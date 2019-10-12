@@ -54,6 +54,7 @@ ext {
     version_retrofit = '2.3.0'
     version_rxjava = '2.2.13'
     version_rxandroid = '2.1.1'
+    version_glide = '4.9.0'
 }
 
 dependencies {
@@ -83,6 +84,10 @@ dependencies {
     // RxJava
     implementation "io.reactivex.rxjava2:rxjava:$version_rxjava"
     implementation "io.reactivex.rxjava2:rxandroid:$version_rxandroid"
+
+    // glide
+    implementation "com.github.bumptech.glide:glide:$version_glide"
+    kapt "com.github.bumptech.glide:compiler:$version_glide"
 
     testImplementation "junit:junit:$version_junit"
     androidTestImplementation "androidx.test.ext:junit:$version_junit_test"
